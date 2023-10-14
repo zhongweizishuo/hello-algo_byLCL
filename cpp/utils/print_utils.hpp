@@ -74,10 +74,11 @@ template <typename T> void printVectorMatrix(vector<vector<T>> &matrix) {
     cout << "]" << '\n';
 }
 
-/* Print a linked list */
+/* Print a linked list  打印链表*/
 void printLinkedList(ListNode *head) {
     vector<int> list;
     while (head != nullptr) {
+        // 往前遍历，将节点的值压入 list
         list.push_back(head->val);
         head = head->next;
     }

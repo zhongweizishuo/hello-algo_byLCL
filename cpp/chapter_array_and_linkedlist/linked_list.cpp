@@ -8,6 +8,7 @@
 
 /* 在链表的节点 n0 之后插入节点 P */
 void insert(ListNode *n0, ListNode *P) {
+    // 得到 n0 -> P -> n1
     ListNode *n1 = n0->next;
     P->next = n1;
     n0->next = P;
@@ -18,8 +19,12 @@ void remove(ListNode *n0) {
     if (n0->next == nullptr)
         return;
     // n0 -> P -> n1
-    ListNode *P = n0->next;
-    ListNode *n1 = P->next;
+    // 获得n0之后的节点
+    ListNode *P =n0->next; //暂时存为P ,方便delete P
+    ListNode *n1 =n0->next->next;
+    
+    // 重新指向新节点
+    // n1 = n0->next; 错误的写法--------------------------------------
     n0->next = n1;
     // 释放内存
     delete P;
@@ -28,9 +33,10 @@ void remove(ListNode *n0) {
 /* 访问链表中索引为 index 的节点 */
 ListNode *access(ListNode *head, int index) {
     for (int i = 0; i < index; i++) {
-        if (head == nullptr)
+        if (head == nullptr) // 判空
             return nullptr;
-        head = head->next;
+        
+        head = head->next; // 往前遍历，直到index
     }
     return head;
 }
@@ -38,10 +44,10 @@ ListNode *access(ListNode *head, int index) {
 /* 在链表中查找值为 target 的首个节点 */
 int find(ListNode *head, int target) {
     int index = 0;
-    while (head != nullptr) {
+    while (head != nullptr) { // 判空
         if (head->val == target)
             return index;
-        head = head->next;
+        head = head->next; // 不满足，往前遍历
         index++;
     }
     return -1;
@@ -51,7 +57,8 @@ int find(ListNode *head, int target) {
 int main() {
     /* 初始化链表 */
     // 初始化各个节点
-    ListNode *n0 = new ListNode(1);
+    // ListNode *n0 = new ListNode(0);
+    ListNode *n0 = new ListNode(1); 
     ListNode *n1 = new ListNode(3);
     ListNode *n2 = new ListNode(2);
     ListNode *n3 = new ListNode(5);

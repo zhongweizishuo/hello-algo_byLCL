@@ -15,8 +15,14 @@ using namespace std;
 struct ListNode {
     int val;
     ListNode *next;
-    ListNode(int x) : val(x), next(nullptr) {
-    }
+    // 构造函数
+    
+    ListNode(int x) : val(x), next(nullptr) {}
+    // 等价于下面的写法----------------------------------------
+    // ListNode(int x ){
+    //     val = x;
+    //     next = nullptr;
+    // }
 };
 
 /* Generate a linked list with a vector */
@@ -41,10 +47,10 @@ ListNode *getListNode(ListNode *head, int val) {
 /* Free the memory allocated to a linked list */
 void freeMemoryLinkedList(ListNode *cur) {
     // 释放内存
-    ListNode *pre;
+    ListNode *temp; // 暂存并删除节点
     while (cur != nullptr) {
-        pre = cur;
+        temp = cur;
         cur = cur->next;
-        delete pre;
+        delete temp;
     }
 }
