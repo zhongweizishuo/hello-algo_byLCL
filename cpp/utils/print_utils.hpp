@@ -25,6 +25,7 @@ template <typename T> int vecFind(const vector<T> &vec, T ele) {
 }
 
 /* Concatenate a vector with a delim */
+// 有意思：输入一个符号delim ,和一个vector ，按遍历输出 delim+vector里面的每一个元素
 template <typename T> string strJoin(const string &delim, const T &vec) {
     ostringstream s;
     for (const auto &i : vec) {

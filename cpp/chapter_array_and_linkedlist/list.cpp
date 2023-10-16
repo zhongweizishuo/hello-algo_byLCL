@@ -9,6 +9,9 @@
 /* Driver Code */
 int main() {
     /* 初始化列表 */
+    // 无初始值的初始化
+    vector<int> list_name;
+    // 有初始值的初始化
     vector<int> nums = {1, 3, 2, 5, 4};
     cout << "列表 nums = ";
     printVector(nums);
@@ -18,8 +21,8 @@ int main() {
     cout << "访问索引 1 处的元素，得到 x = " << x << endl;
 
     /* 更新元素 */
-    nums[1] = 0;
-    cout << "将索引 1 处的元素更新为 0 ，得到 nums = ";
+    nums[1] = 10;
+    cout << "将索引 1 处的元素更新为 10 ，得到 nums = ";
     printVector(nums);
 
     /* 清空列表 */
@@ -27,7 +30,7 @@ int main() {
     cout << "清空列表后 nums = ";
     printVector(nums);
 
-    /* 尾部添加元素 */
+    /* vector尾部添加元素 使用的是push_back() */
     nums.push_back(1);
     nums.push_back(3);
     nums.push_back(2);
@@ -48,15 +51,25 @@ int main() {
 
     /* 通过索引遍历列表 */
     int count = 0;
-    for (int i = 0; i < nums.size(); i++) {
+    cout << "for loop traverse:  ";
+    for (int i = 0; i < nums.size(); i++)
+    {
+        cout << nums[i] << ",";
         count++;
     }
+    cout << endl
+         << "count = " << count << endl;
+    ;
 
     /* 直接遍历列表元素 */
     count = 0;
-    for (int n : nums) {
+    for(int n: nums){
         count++;
+        cout << n << ","; 
     }
+    cout << endl
+         << "count = " << count << endl;
+    ;
 
     /* 拼接两个列表 */
     vector<int> nums1 = {6, 8, 7, 10, 9};

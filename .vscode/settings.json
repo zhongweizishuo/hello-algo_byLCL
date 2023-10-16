@@ -2,6 +2,9 @@
     "cmake.sourceDirectory": "/home/zhong/Desktop/hello-algo_byLCL/c",
     "files.associations": {
         "sstream": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "stdexcept": "cpp"
     }
 }

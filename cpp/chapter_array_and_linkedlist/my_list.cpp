@@ -10,19 +10,21 @@
 class MyList {
   private:
     int *arr;             // 数组（存储列表元素）
-    int arrCapacity = 10; // 列表容量
-    int arrSize = 0;      // 列表长度（即当前元素数量）
+    int arrCapacity = 10; // 列表初始容量
+    int arrSize = 0;      // 列表长度（记录列表的当前元素数量）
     int extendRatio = 2;   // 每次列表扩容的倍数
 
   public:
     /* 构造方法 */
     MyList() {
-        arr = new int[arrCapacity];
+        arr = new int[arrCapacity]; // 创建一个数组
+        cout << "MyList()的构造函数调用" << endl;
     }
 
     /* 析构方法 */
     ~MyList() {
-        delete[] arr;
+        delete[] arr;  // 析构数组
+        cout << "MyList()的析构函数调用" << endl;
     }
 
     /* 获取列表长度（即当前元素数量）*/
@@ -95,6 +97,7 @@ class MyList {
     void extendCapacity() {
         // 新建一个长度为原数组 extendRatio 倍的新数组
         int newCapacity = capacity() * extendRatio;
+        // 旧的暂存，申请新的数组，并复制过去；最后删除暂存的
         int *tmp = arr;
         arr = new int[newCapacity];
         // 将原数组中的所有元素复制到新数组
@@ -108,7 +111,7 @@ class MyList {
 
     /* 将列表转换为 Vector 用于打印 */
     vector<int> toVector() {
-        // 仅转换有效长度范围内的列表元素
+        // 仅转换有效长度范围内的列表元素，vector的size()还是arr的size()
         vector<int> vec(size());
         for (int i = 0; i < size(); i++) {
             vec[i] = arr[i];
@@ -119,8 +122,9 @@ class MyList {
 
 /* Driver Code */
 int main() {
-    /* 初始化列表 */
+    /* 初始化列表:调用构造函数 */
     MyList *nums = new MyList();
+    cout << "MyList() Init over" << endl;
     /* 尾部添加元素 */
     nums->add(1);
     nums->add(3);
@@ -128,7 +132,7 @@ int main() {
     nums->add(5);
     nums->add(4);
     cout << "列表 nums = ";
-    vector<int> vec = nums->toVector();
+    vector<int> vec = nums->toVector(); //nums转vec方便输出打印
     printVector(vec);
     cout << "容量 = " << nums->capacity() << " ，长度 = " << nums->size() << endl;
 
