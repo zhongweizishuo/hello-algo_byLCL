@@ -110,9 +110,9 @@ class MyList {
     }
 
     /* 将列表转换为 Vector 用于打印 */
-    vector<int> toVector() {
+    vector<int> toVector() { //vetor<int> 是函数toVector()返回值类型
         // 仅转换有效长度范围内的列表元素，vector的size()还是arr的size()
-        vector<int> vec(size());
+        vector<int> vec(size()); // 创建了一个名为 `vec` 的 `vector<int>` 对象，其大小为列表的大小（通过调用 `size()` 函数获得）。
         for (int i = 0; i < size(); i++) {
             vec[i] = arr[i];
         }

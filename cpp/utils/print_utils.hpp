@@ -148,21 +148,25 @@ void printTree(TreeNode *root) {
 }
 
 /* Print a stack */
+// 模板函数
 template <typename T> void printStack(stack<T> stk) {
     // Reverse the input stack
     stack<T> tmp;
     while (!stk.empty()) {
         tmp.push(stk.top());
         stk.pop();
+        // 将stack 翻转存入栈 tmp
     }
     // Generate the string to print
-    ostringstream s;
+    // 这段代码用于生成并打印一个包含堆栈（stack）中元素的字符串，\
+       格式为以逗号分隔的方括号包围的元素列表
+    ostringstream s; // 创建了一个 ostringstream 对象s，它用于构建字符串
     bool flag = true;
     while (!tmp.empty()) {
-        if (flag) {
+        if (flag) { // flag == true，表示这是第一个元素，不需要在前面插入逗号
             s << tmp.top();
             flag = false;
-        } else
+        } else // 表示下一个元素之前需要插入逗号
             s << ", " << tmp.top();
         tmp.pop();
     }
